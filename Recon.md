@@ -3,7 +3,9 @@
 When starting in bug bounty, it is important to understand the program and its scope. This does not mean just visiting the app and using it. It also means understanding the environment. In this document we will learn some techiniques for recon purposes. 
 
 *Understanding the Environment*
+
 It is important to see how the application is running along with its environment. We will discuss about checking the environment in the following topics. 
+
 1) SSL Certificates
 
 SSL Certificates will help you to see different subdomains that is under the control of the domain. SSL ceritifcates help to validate the onwership of the domain from the company. For example, with similar SSL certificate and company name, we can see that ssl.example.com might is also under control of example.com 
