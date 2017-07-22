@@ -11,24 +11,25 @@ I mentioned most of the tools and website in my previous post, Recon.md. In this
 
 1) HostileSubBruteforcer
 
-This tool was written by Ben Sadeghipour aka (@Nahamsec). It is written in Ruby and in my personal opinion is one of the best tools for takeovers. This tool not only lists out subdomains by bruteforcing them, it also maps out where it points to. Along with that, if the domain throws out errors like `This Github pages does not exist`, `NoSuchBucket` etc, it will print it out in Red alert and ask you to check them for possible takeovers. 
-I personally have found some takeovers with this tool. 
+This tool was written by Ben Sadeghipour aka (@Nahamsec). It is written in Ruby and in my personal opinion is one of the best tools for takeovers. This tool not only lists out subdomains by bruteforcing them, it also maps out where it points to. Along with that, if the domain throws out errors like `This Github pages does not exist`, `NoSuchBucket` etc, it will print it out in red alert and asks you to check them for possible takeovers. I personally have found some takeovers with this tool. 
 
 2) Sublist3r
 
 This tool is a package of multiple websites' results. It contains subdomains from VirusTotal, ThreatCrowd, DNSDumpster, PassiveDNS and many others. One bad side of this tool is that it might give out false positives. Some websites like `DNSDumpster` update their website after 1 month. Due to this, if a service was updated within that time period, DNSDumpster will take time to show it. Nonetheless, this is a great tool to have on your side. 
 
-*There also websites that we can disucss about like VirusTotal, but because they are integrated in Sublist3r I am not going to discuss much.*
+*There are also websites that we can disucss about like VirusTotal, but because they are integrated in Sublist3r I am not going to discuss much.*
 
 3) Certificates tool
 
 Some companies like Facebook and Google allow you to check certificates of website under ownership of the company. This will allow you to enumerate many more subdomains. 
 
+https://developers.facebook.com/tools/ct is what I have been using quite frequenly now. It also allows you to subscribe to the domain's alert so that you can get an alert when a new certificate is issued (this could mean new subdomains or just a renewal of certificates). 
+
 # Taking over subdomains
 
-Once you enumerate subdomains, you will have to understand where they are pointing to and the third party service that they use inorder to confirm they are vulnerable. Sometimes, I have noticed reporters submit some false positives as well. 
+Once you enumerate subdomains, you will have to understand where they are pointing to and the third party services that they use to confirm if they are vulnerable. Sometimes, I have noticed reporters submit some false positives as well. 
 
-I have seen researchers asking about Fastly subdomain takeovers but based on my check and multiple confirmation from other hackers, I can tell that Fastly subdomain takeover is nearly impossible. Some reporters are still submiting these reports and the companies who get these validate them as correct however, Fastly subdomain takeover AGAIN is not vulnerable. 
+I have seen researchers ask about Fastly subdomain takeovers but based on my checks and multiple confirmation from other hackers, I can tell that Fastly subdomain takeover is nearly impossible. Some reporters are still submiting these reports and the companies who get these validate them as correct however, Fastly subdomain takeover AGAIN is not vulnerable. 
 
 In this blog, I will show you taking over a subdomain in website `securify.network`. This is my personal website that I made vulnerable to takeovers. First lets enumerate the subdomains: 
 
@@ -36,7 +37,7 @@ In this blog, I will show you taking over a subdomain in website `securify.netwo
 
 In the above picture, we see three section: `Sublist3r`, `Vulnerable`, `Bruteforced`. Each of these show subdomains that are good for us to know. The `vulnerable` section is an interesting one because it lists out three subdomains. 
 
-Let us start with the highlighted `tutorials3.securify.network` which DNS information is below: 
+Let us start with the highlighted `tutorials3.securify.network`. Its DNS information is below: 
 
 ![DNS Analysis](http://i.imgur.com/qj6DTR2.png "DNS Analysis")
 
@@ -70,5 +71,5 @@ Right below username there is `Tumblr URL`. Click on it and select `Use Custom S
 
 Click `Save` and your subdomain takeover should work. 
 
-There are other services like Zendesk, Desk, Unbounce and many other 3rd party services that can be used for takeovers. The key for takeovers exists in understanding how they work and how they setup subdomains for customers.. 
+There are other services like Zendesk, Desk, Unbounce and many other 3rd party services that can be used for takeovers. The key for takeovers exists in understanding how the third party works and how they setup subdomains for customers.
 
